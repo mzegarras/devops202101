@@ -28,11 +28,11 @@ pipeline {
                                cd lab09
                 
                                 echo ${params.IS_NEW}
-                                if (${params.IS_NEW}== true) {
+                                if [ "${params.IS_NEW}" = true ] ; then
                                      gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
-                                } else {
-                                     gcloud deployment-manager deployments update a-single-vm --config deploy.yaml
-                                }
+                                else
+                                    gcloud deployment-manager deployments update a-single-vm --config deploy.yaml
+                                fi
                                
                             """
                             //sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-a --project ${project}")
