@@ -1,0 +1,35 @@
+
+pipeline {
+    // Cualquier agente
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                // Clones the repository from the current branch name
+                echo 'Make the output directory'
+                sh 'mkdir -p build'
+
+                dir('build') {
+                    git branch: "main", credentialsId: 	"github01", url: 'https://github.com/mzegarras/WebFluxCI.git'
+                }   
+            }  
+        }       
+
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
