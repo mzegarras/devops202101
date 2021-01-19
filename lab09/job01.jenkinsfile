@@ -28,7 +28,7 @@ pipeline {
                                cd lab09
                 
                                 echo ${params.IS_NEW}
-                                if (params.IS_NEW) {
+                                if (params.IS_NEW==true) {
                                      gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
                                 } else {
                                      gcloud deployment-manager deployments update a-single-vm --config deploy.yaml
