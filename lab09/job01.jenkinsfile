@@ -25,7 +25,7 @@ pipeline {
                                 HOME=${WORKSPACE}
                                 gcloud auth activate-service-account --key-file=${GC_KEY};
                                 gcloud config set project ${GOOGLE_PROJECT_ID};
-                               ls -lta
+                               cd lab09
                                 gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
                             """
                             //sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-a --project ${project}")
