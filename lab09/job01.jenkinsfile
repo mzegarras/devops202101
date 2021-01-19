@@ -1,0 +1,37 @@
+pipeline {
+    environment {
+            GOOGLE_PROJECT_ID = 'devops202101';
+        
+        	GOOGLE_SERVICE_ACCOUNT_KEY = credentials('secretfile');
+        }
+            // imagen node
+            agent {
+                docker { image 'google/cloud-sdk:slim' }
+            }
+
+            stages {
+                stage('Build') {
+                    steps {
+                        echo 'Building..'
+                        //sh """
+                        //gcloud --version
+                        //gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
+                        //"""
+                        //withCredentials([[$class: 'StringBinding', credentialsId: env.OAUTH_IT_CRED_ID, variable: 'GOOGLE_CREDENTIALS']]) {
+                        //withCredentials([[$class: 'StringBinding', credentialsId: 'secretfile', variable: 'GC_KEY']]) {
+                         //gcloud projects list
+                        withCredentials([file(credentialsId: 'secretfile', variable: 'GC_KEY')]) {
+                            sh """
+                                HOME=${WORKSPACE}
+                                gcloud auth activate-service-account --key-file=${GC_KEY};
+                                gcloud config set project ${GOOGLE_PROJECT_ID};
+                               ls -lta
+                                gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
+                            """
+                            //sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-a --project ${project}")
+                        }
+                        
+                    }
+                }
+            }
+        }

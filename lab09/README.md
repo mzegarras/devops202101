@@ -12,6 +12,7 @@ export SA_EMAIL=$(gcloud iam service-accounts list --filter="displayName:jenkins
 export PROJECT=$(gcloud info --format='value(config.project)')
 
 1. Crea la cuenta de servicio:
+
 gcloud projects add-iam-policy-binding $PROJECT \
     --role roles/storage.admin --member serviceAccount:$SA_EMAIL
 gcloud projects add-iam-policy-binding $PROJECT --role roles/compute.instanceAdmin.v1 \
@@ -22,6 +23,8 @@ gcloud projects add-iam-policy-binding $PROJECT --role roles/compute.securityAdm
     --member serviceAccount:$SA_EMAIL
 gcloud projects add-iam-policy-binding $PROJECT --role roles/iam.serviceAccountActor \
     --member serviceAccount:$SA_EMAIL
+
+gcloud services enable cloudresourcemanager.googleapis.com --project <PROJECT ID> 
 
 
     gcloud deployment-manager deployments create a-single-vm --template deploy01.jinja \
