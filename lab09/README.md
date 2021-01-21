@@ -24,8 +24,11 @@ gcloud projects add-iam-policy-binding $PROJECT --role roles/compute.securityAdm
 gcloud projects add-iam-policy-binding $PROJECT --role roles/iam.serviceAccountActor \
     --member serviceAccount:$SA_EMAIL
 
-gcloud services enable cloudresourcemanager.googleapis.com --project <PROJECT ID> 
+gcloud services enable cloudresourcemanager.googleapis.com --project devops202101 
+gcloud services enable cloudresourcemanager.googleapis.com --project devops202101 
 
+resourcemanager.projects.get
+serviceusage.services.get
 
     gcloud deployment-manager deployments create a-single-vm --template deploy01.jinja \
     --properties zone:us-central1-a
