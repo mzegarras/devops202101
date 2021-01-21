@@ -26,7 +26,14 @@ pipeline {
                                 gcloud auth activate-service-account --key-file=${GC_KEY};
                                 gcloud config set project ${GOOGLE_PROJECT_ID};
                                cd lab09
-                                gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
+                
+                                echo ${params.IS_NEW}
+                                if [ "${params.IS_NEW}" = true ] ; then
+                                     gcloud deployment-manager deployments create a-single-vm --config deploy.yaml
+                                else
+                                    gcloud deployment-manager deployments update a-single-vm --config deploy.yaml
+                                fi
+                               
                             """
                             //sh("gcloud container clusters get-credentials prod --zone northamerica-northeast1-a --project ${project}")
                         }
