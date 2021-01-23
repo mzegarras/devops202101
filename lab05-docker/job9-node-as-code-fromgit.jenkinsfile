@@ -1,0 +1,15 @@
+        pipeline {
+            // imagen node
+            agent {
+                docker { image 'node:latest' }
+            }
+
+            stages {
+                stage('Build') {
+                    steps {
+                        echo 'Building..'
+                        sh 'npm version'
+                    }
+                }
+            }
+        }
