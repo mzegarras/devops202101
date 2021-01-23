@@ -19,3 +19,4 @@ chown "${SUDO_USER}:docker" /var/run/docker.sock
 
 echo "Install git"
  sudo dnf install git-all -y
+ sudo dnf install nano -y
