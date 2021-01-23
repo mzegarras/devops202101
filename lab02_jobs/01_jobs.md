@@ -19,7 +19,7 @@
         * Build --> Execute shell --> 
         ```console
         NOMBRE="AUTO"
-        echo "La fecha del sistema es $date - $NOMBRE" >> /tmp/demo.txt
+        echo "La fecha del sistema es $(date) - $NOMBRE" >> /tmp/demo.txt
         ```        
         * Verificar
         ```console
