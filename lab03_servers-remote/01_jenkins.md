@@ -21,6 +21,7 @@
     ```bash
     mkdir jenkins_home
     docker-compose  -f docker-compose-v2.yaml up -d
+    docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
     docker exec -it jenkins bash
     ```
 1. Conectarse a máquina remota
