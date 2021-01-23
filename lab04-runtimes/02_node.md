@@ -8,7 +8,7 @@
     1. Clic Avialable
     1. Buscar Plugin: "NodeJS"
 
-1. Instalar maven
+1. Instalar nodejs
     1. Manage Jenkins
     1. Global Tool Configuration
     1. Ir a la sección: "NodeJS"
