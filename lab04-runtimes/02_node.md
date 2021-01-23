@@ -18,7 +18,17 @@
         * Version: 15.1.1
 
 ## JOBS
-1. Crear job6-nodejs
+1. Crear job6-build-nodejs
+    * Crear proyecto del estilo libre.
+        * Nombre: job6-nodejs
+        * Description: Node demo
+        * Build Environment: Provide Node & npm bin/ folder to PATH
+        * Build --> add execute shell --> 
+        ```shell         
+        npm version
+        ```        
+
+1. Crear job6-script-nodejs
     * Crear proyecto del estilo libre.
         * Nombre: job6-nodejs
         * Description: Node demo
@@ -26,4 +36,5 @@
         ```shell         
         console.log("ok");
         console.log(process.version);
-        ```        
+        ```  
+
