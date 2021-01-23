@@ -48,6 +48,12 @@
     docker-compose --version
     ```
 
+1. Instalar git
+    ```console
+    sudo dnf install git-all
+    ```
+    
+
 1. Habilitar Firewall
         
     * Edit tags

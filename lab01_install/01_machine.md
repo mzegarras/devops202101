@@ -88,5 +88,5 @@
 
 1. Login VM
     ```console
-    ssh -i ./credentials/jenkins202101 mzegarra@104.197.254.175
+    ssh -i ./credentials/jenkins202101 mzegarra@35.226.189.216
     ```
