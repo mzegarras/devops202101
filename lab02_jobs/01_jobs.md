@@ -1,19 +1,19 @@
 # JOBS
 
 1. Crear job1
-    * Crear proyecto del estilo libre.
+    1. Crear proyecto del estilo libre.
         * Nombre: job01
         * Description: Primer job
         * Build --> Execute shell --> echo "hola mundo"
 
 1. Editar job1
-    * Crear proyecto del estilo libre.
+    1. Crear proyecto del estilo libre.
         * Nombre: job01
         * Description: Primer job
         * Build --> Execute shell --> echo "La fecha del sistema es $(date)"
 
 1. Crear job2
-    * Crear proyecto del estilo libre.
+    1. Crear proyecto del estilo libre.
         * Nombre: job02
         * Description: Segundo job
         * Build --> Execute shell --> 
@@ -30,7 +30,7 @@
         
 1. Crear job3
 
-    * Crear /opt/script.sh
+    1. Crear /opt/script.sh
     ```console
     #!/bin/bash
 
@@ -60,8 +60,8 @@
     ``` 
 
 1. Crear job4 con parámtros
-    * En la sección **General**, seleccionar _"This project is parameterized"_
-    * Agregar 3 parámetros:
+    1. En la sección **General**, seleccionar _"This project is parameterized"_
+    1. Agregar 3 parámetros:
         | NAME        | TYPE           | Value  |
         | ------------- |:-------------:|:-----|
         | NOMBRE        | String        | DEV |
