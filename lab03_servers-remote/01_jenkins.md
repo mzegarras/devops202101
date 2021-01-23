@@ -29,6 +29,7 @@
     docker ps
     docker cp ./centos8/remote-key jenkins:/tmp
     docker exec -it jenkins bash
+    chmod 600 /tmp/remote-key
     ssh -i /tmp/remote-key remote_user@remote_host
     ```
 
