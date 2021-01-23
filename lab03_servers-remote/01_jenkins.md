@@ -19,6 +19,7 @@
 
 1. Iniciar docker-compose con remote machine
     ```bash
+    mkdir jenkins_home
     docker-compose  -f docker-compose-v2.yaml up -d
     docker exec -it jenkins bash
     ```
