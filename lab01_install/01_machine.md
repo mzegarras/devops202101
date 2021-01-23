@@ -42,7 +42,7 @@
     ```console
     gcloud compute project-info describe --project devops202101
     ```
-    * Finds keys:  
+    1. Finds keys:  
         * google-compute-default-region
         * google-compute-default-zone
 
@@ -54,7 +54,7 @@
 
 1. To create VM
 
-    * List machine-types
+    1. List machine-types
         ```console
         gcloud compute machine-types list  --filter="zone:(us-east4-c)"
         ```
@@ -62,14 +62,14 @@
             * e2-standard-2
             * e2-standard-4
         
-    * List images
+    1. List images
         ```console
         gcloud compute images list
         ```
         * Search:
             * centos-8-v20201216
 
-    * Create VM
+    1. Create VM
         ```console
         gcloud compute instances create server01 \
         --image centos-8-v20201216 \
