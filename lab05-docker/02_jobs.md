@@ -18,6 +18,10 @@
             }
         }
         ```
+1. Crear job8-as-code-fromgit
+     * Crear proyecto del Pipeline
+        * Nombre: job8-as-code-fromgit
+        * Description: Pipeline as code from git
 
 1. Crear job9-node-as-code
     * Crear proyecto del Pipeline
