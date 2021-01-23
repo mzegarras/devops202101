@@ -9,6 +9,12 @@
     mkdir jenkins_home
     docker-compose up -d
     docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+    
+    docker exec -it --user root jenkins /bin/bash
+    chown jenkins /var/run/docker.sock
+    docker exec -it jenkins /bin/bash
     ``` 
 
 1. Instalar plugins docker pipeline

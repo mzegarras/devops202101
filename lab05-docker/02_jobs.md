@@ -24,7 +24,7 @@
         * Description: Pipeline as code from git
         * Pipeline script from SCM
         * Branch: Main
-        * Script Path: ./lab05-docker/job1.jenkinsfile
+        * Script Path: ./lab05-docker/job8-as-code-fromgit.jenkinsfile
 
 1. Crear job9-node-as-code
     * Crear proyecto del Pipeline
@@ -48,6 +48,14 @@
             }
         }
         ```
+
+1. Crear job9-node-as-code-fromgit
+     * Crear proyecto del Pipeline
+        * Nombre: job8-as-code-fromgit
+        * Description: Pipeline as code from git
+        * Pipeline script from SCM
+        * Branch: Main
+        * Script Path: ./lab05-docker/job9-node-as-code-fromgit.jenkinsfile
 
 
 1. Crear job10-java-as-code
