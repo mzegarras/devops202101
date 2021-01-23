@@ -17,3 +17,5 @@ chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 chown "${SUDO_USER}:docker" /var/run/docker.sock
 
+echo "Install git"
+ sudo dnf install git-all -y
