@@ -1,4 +1,4 @@
-# Lab06
+# lab06-docker-03
 
 ### Tag images
 

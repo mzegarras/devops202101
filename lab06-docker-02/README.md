@@ -1,4 +1,4 @@
-# Lab05
+# lab06-docker-02
 
 ### Creando imagenes
 
