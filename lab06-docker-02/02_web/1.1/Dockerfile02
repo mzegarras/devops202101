@@ -1,0 +1,13 @@
+#FROM nginx:stable
+FROM nginx:1.19.2-perl
+
+ENV TZ=America/Lima
+#ADD ./dist /usr/share/nginx/html
+
+ADD /dist.tgz /dist.tgz
+RUN ls -lt /dist.tgz/dist && \
+    mv /dist.tgz/dist/* /usr/share/nginx/html && \
+    ls -lt /usr/share/nginx/html
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]

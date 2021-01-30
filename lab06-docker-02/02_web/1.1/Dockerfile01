@@ -1,0 +1,12 @@
+FROM nginx:stable
+
+ENV TZ=America/Lima
+
+COPY /dist.tgz /dist.tgz
+#RUN ls -lt /
+RUN tar -xzvf /dist.tgz  -C /usr/share/nginx/html
+#RUN ls -lt /usr/share/nginx/html
+RUN mv /usr/share/nginx/html/dist/*  /usr/share/nginx/html/
+#RUN ls -lt /usr/share/nginx/html
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,7 @@
+FROM ubuntu
+#RUN apk update
+#RUN apk add curl
+#RUN apk update && apk add curl
+RUN apt-get update
+RUN apt-get install -y curl
+ENTRYPOINT ["curl", "ifconfig.me"]
