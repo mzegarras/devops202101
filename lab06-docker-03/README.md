@@ -24,6 +24,12 @@
 
     docker tag website:latest website:2.0.0
     docker tag website:latest mzegarra/website:2.0.0
+
+    docker tag website:0.0.1 mzegarra/website:0.0.1
+    docker tag website:0.0.2 mzegarra/website:0.0.2
+    docker tag website:0.0.3 mzegarra/website:0.0.3
+    docker tag website:0.0.3 mzegarra/website:latest
+
     ```
 
 1. Docker hub login
