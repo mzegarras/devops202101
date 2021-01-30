@@ -15,6 +15,7 @@
     docker exec -it --user root jenkins /bin/bash
     chown jenkins /var/run/docker.sock
     docker exec -it jenkins /bin/bash
+    docker ps
     ``` 
 
 1. Instalar plugins docker pipeline
@@ -23,3 +24,4 @@
     1. Manage Plugins
     1. Clic Avialable
     1. Buscar Plugin: "Pipeline" , "Docker Pipeline"
+

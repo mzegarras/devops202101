@@ -82,11 +82,11 @@
 
     ```console
     ssh-keygen -f /usr/local/Proyectos/Galaxy/Devops-202101/credentials/jenkins202101 -t rsa
-    chmod 400 jenkins202101
+    chmod 400 /usr/local/Proyectos/Galaxy/Devops-202101/credentials/jenkins202101
     ssh -i "/usr/local/Proyectos/Galaxy/Devops-202101/credentials/jenkins202101" mzegarra@35.225.121.132
     ```
 
 1. Login VM
     ```console
-    ssh -i ./credentials/jenkins202101 mzegarra@35.226.189.216
+    ssh -i ./credentials/jenkins202101 mzegarra@34.71.190.195
     ```
