@@ -2,12 +2,12 @@
 
 ### Tag images
 
-* Limpiar (opcional)
+1. Limpiar (opcional)
     ```bash
     docker system prune
     ```
 
-*  Generar website:1.0.0
+1.  Generar website:1.0.0
     ```bash
     docker build -t website -f ./1.0/Dockerfile ./1.0/
     docker build -t website .
@@ -26,13 +26,16 @@
     docker tag website:latest mzegarra/website:2.0.0
     ```
 
-* Docker hub login
+1. Docker hub login
     ```bash
- docker login docker.io
-    <<user>>/<<repository name>>:<<tag>>
+        docker login docker.io
+        <<user>>/<<repository name>>:<<tag>>
+    
+        docker push mzegarra/website:0.0.3
+        docker push mzegarra/website:latest
     ```
 
-* Push Azure Registry
+1. Push Azure Registry
     ```bash
     docker login galaxytraining01.azurecr.io -u galaxytraining01
     <<url repository>>/<<repository name>>:<<tag>>
