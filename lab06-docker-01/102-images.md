@@ -5,7 +5,7 @@
 
 1. Listar images
     ```bash
-    docker images ls
+    docker images
     ```    
 
 1. Pull
