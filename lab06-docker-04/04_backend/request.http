@@ -1,0 +1,45 @@
+
+### GET programs
+
+GET http://localhost:8080/programs HTTP/1.1
+### GET programs
+GET http://localhost:8080/programs HTTP/1.1
+
+### Create program
+POST http://localhost:8080/programs HTTP/1.1
+content-type: application/json
+
+{
+	"nombre_copy": "SRMR031",
+	"programa": "SRMR031 <br/> Llamado por el program BSEOICS",
+	"funcionalidad": "Consultas de datos del Cliente",
+	"entrada": "Código Unico  ó <br/> Tipo Documento <br/> Número Documento",
+	"salida": "<ul><li>Datos de Clientes Personas<ul><li>Datos Personales</li><li>Datos de Empleos</li></ul></li><li>Datos de Clientes Comerciales<ul><li>Datos de la Empresa </li> <li>Datos Comerciales</li> </ul></li> <li>Datos de Contacto <ul><li>Dirección</li><li>Email (emaper, emajob)</li><li>Teléfono (Trabajo, Residencia, Celular, Negocio, Fax)</li></ul></li></ul>",
+	"bus_codigo": "A0001 <br/> A0001 <br/> A0309",
+	"bus_version": "v1.0 <br/> v2.0 <br/> v1.0",
+	"bus_framework": "F4 <br/> F4 <br/> F4",
+	"bus_identificador": "cliente.consultarCliente",
+	"api": "customer"
+}
+
+### EDIT program
+PUT http://localhost:3000/programs/5e8e6de59d022a0014c5e63f HTTP/1.1
+content-type: application/json
+
+{
+	"nombre_copy": "SRMR0312",
+	"programa": "SRMR031 <br/> Llamado por el program BSEOICS",
+	"funcionalidad": "Consultas de datos del Cliente",
+	"entrada": "Código Unico  ó <br/> Tipo Documento <br/> Número Documento",
+	"salida": "<ul><li>Datos de Clientes Personas<ul><li>Datos Personales</li><li>Datos de Empleos</li></ul></li><li>Datos de Clientes Comerciales<ul><li>Datos de la Empresa </li> <li>Datos Comerciales</li> </ul></li> <li>Datos de Contacto <ul><li>Dirección</li><li>Email (emaper, emajob)</li><li>Teléfono (Trabajo, Residencia, Celular, Negocio, Fax)</li></ul></li></ul>",
+	"bus_codigo": "A0001 <br/> A0001 <br/> A0309",
+	"bus_version": "v1.0 <br/> v2.0 <br/> v1.0",
+	"bus_framework": "F4 <br/> F4 <br/> F4",
+	"bus_identificador": "cliente.consultarCliente",
+	"api": "customer"
+}
+
+### DELETE program
+DELETE http://localhost:3000/programs/5e8e6de59d022a0014c5e63f HTTP/1.1
+
+

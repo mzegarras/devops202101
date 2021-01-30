@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  service1:
+    image: "tci-service1:latest"
+    build:
+      context: java/
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8090
+  website:
+    image: "tci-web1:latest"
+    build:
+      context: angular/
+      dockerfile: ./Dockerfile
+    ports:
+      - 8081:80
