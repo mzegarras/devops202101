@@ -1,6 +1,9 @@
 #credential
 credentials
 
+#excluir folders _review
+*_review
+
 # General
 .DS_Store
 .AppleDouble
@@ -27,5 +30,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-*_review
