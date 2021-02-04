@@ -31,7 +31,7 @@ services:
         - db
       volumes:
         - $PWD/data/sonarqube/conf:/opt/sonarqube/conf
-        - $PWD/data/sonarqube/data:/opt/sonarqube/conf
+        - $PWD/data/sonarqube/data:/opt/sonarqube/data
         - $PWD/data/sonarqube/logs:/opt/sonarqube/logs
         - $PWD/data/sonarqube/extensions:/opt/sonarqube/extensions
 
