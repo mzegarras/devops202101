@@ -13,7 +13,7 @@ services:
     networks:
       - net   
   sonarqube:
-      image: sonarqube:7.9.5-community
+      image: sonarqube:7.1
       container_name: sonarqube
       ports:
         - 8081:9000

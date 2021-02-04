@@ -5,11 +5,19 @@
 1. Limpiar containers
     ```bash 
     docker rm $(docker ps -aq) -f
+
+    docker rmi $(docker images | grep '^<none>' | awk '{print $3}')
+    docker volume ls -qf dangling=true
+    docker volume rm $(docker volume ls -qf dangling=true)
     ```     
 
 1. Revisar sonnarQube
     ```bash 
     docker rm $(docker ps -aq) -f
+    mkdir -p ./data/sonarqube/conf
+    mkdir -p ./data/sonarqube/data
+    mkdir -p ./data/sonarqube/logs
+    mkdir -p ./data/sonarqube/extensions
     ```     
 
 1. Generar imagen
