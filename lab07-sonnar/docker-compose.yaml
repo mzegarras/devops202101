@@ -31,10 +31,10 @@ services:
         - db
       volumes:
         - $PWD/data/sonarqube/conf:/opt/sonarqube/conf
-        - $PWD/data/sonarqube/conf/elasticsearch.yml:/opt/sonarqube/elasticsearch/config/elasticsearch.yml
-        # - sonarqube_data:/opt/sonarqube/data
-        # - sonarqube_extensions:/opt/sonarqube/extensions
-        # - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins          
+        - $PWD/data/sonarqube/data:/opt/sonarqube/conf
+        - $PWD/data/sonarqube/logs:/opt/sonarqube/logs
+        - $PWD/data/sonarqube/extensions:/opt/sonarqube/extensions
+
   db:
     image: postgres
     networks:
