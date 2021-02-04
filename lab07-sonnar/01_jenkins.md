@@ -1,16 +1,23 @@
-# Jenkins as docker
+# Jenkins + SonnarQube as docker
+
 
 ## Settings
+1. Limpiar containers
+    ```bash 
+    docker rm $(docker ps -aq) -f
+    ```     
+
+1. Revisar sonnarQube
+    ```bash 
+    docker rm $(docker ps -aq) -f
+    ```     
 
 1. Generar imagen
     ```bash         
-    docker-compose build
     rm -fr jenkins_home
     mkdir jenkins_home
     docker-compose up -d
     docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-
-
     
     docker exec -it --user root jenkins /bin/bash
     chown jenkins /var/run/docker.sock
