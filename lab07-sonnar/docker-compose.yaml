@@ -23,6 +23,22 @@ services:
         nofile:
           soft: 65536
           hard: 65536
+      environment:
+        - sonar.jdbc.username=sonar
+        - sonar.jdbc.password=sonar
+        - sonar.jdbc.url=jdbc:postgresql://db:5432/sonar
+      depends_on:
+        - db   
+  db:
+    image: postgres
+    networks:
+      - net
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    # volumes:
+    #   - postgresql:/var/lib/postgresql
+    #   - postgresql_data:/var/lib/postgresql/data          
       # volumes:
       #   - sonarqube_conf:/opt/sonarqube/conf
       #   - sonarqube_data:/opt/sonarqube/data
