@@ -16,7 +16,7 @@ services:
       image: sonarqube:8.6.1-developer
       container_name: sonarqube
       ports:
-        - 9000:9000
+        - 8081:9000
       networks:
         - net
       # volumes:
