@@ -3,7 +3,7 @@ services:
   jenkins:
     container_name: jenkins
     build:
-      context: jenkins
+      context: ../lab05-jenkins-docker/jenkins
     image: jenkins/docker
     ports:
       - 8080:8080
@@ -13,7 +13,7 @@ services:
     networks:
       - net   
   sonarqube:
-      image: sonarqube
+      image: sonarqube:8.2-community
       container_name: sonarqube
       ports:
         - 9000:9000
