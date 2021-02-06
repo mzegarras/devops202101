@@ -64,7 +64,7 @@
             PROJECT_ID = 'devops202101'
             CLUSTER_NAME = 'devops202101'
             LOCATION = 'us-east4-c'
-            CREDENTIALS_ID = 'gke2'
+            CREDENTIALS_ID = 'gke'
         }
 
         stages {
