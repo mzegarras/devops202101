@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  jenkins:
+    container_name: jenkins
+    build:
+      context: ../lab05-jenkins-docker/jenkins
+    image: jenkins/docker
+    ports:
+      - 8080:8080
+    volumes:
+      - $PWD/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - net                 
+networks:
+  net:
+  
