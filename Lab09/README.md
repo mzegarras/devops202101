@@ -44,42 +44,7 @@
     gcloud config set project devops202101
     gcloud container clusters create devops202101 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.18
 
-1. Crear job:
-
-```grovy         
- pipeline {
-            
-    agent any
-
-    environment {
-        PROJECT_ID = 'devops202101'
-        CLUSTER_NAME = 'devops202101'
-        LOCATION = 'us-east4-c'
-        CREDENTIALS_ID = 'gke'
-    }
-
-    stages {
-
-        stage('clone') {
-            agent {
-                docker { image 'maven:3.6.3-openjdk-11-slim' }
-            }
-            
-
-            steps {
-
-                git credentialsId: 'githubuser',
-                    url: 'https://github.com/mzegarras/WebFluxCI.git',
-                    branch: 'main'
-            }
-        }
-    }
-}
-```
-
-
-
-
+1. Crear job clientes-genesis:
 
 ```grovy    
 pipeline {
@@ -95,8 +60,6 @@ pipeline {
 
     stages {
         
-       
-            
         stage('Deploy to GKE') {
              agent {
                 docker { 
@@ -110,13 +73,52 @@ pipeline {
             }
 
              steps {
+                withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+                    sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                    sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
+                    sh 'kubectl apply -f ./Lab09/k8s/clientes.yaml'
+                }
+            }
 
-                withCredentials([[$class: 'FileBinding', credentialsId: 'gke2', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
-                sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
-                sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
-                sh 'kubectl get nodes'
+        }
+    }
+}
+```
+
+1. Crear job clientes-apocalipsis:
+```grovy    
+pipeline {
+            
+    agent any
+
+    environment {
+        PROJECT_ID = 'devops202101'
+        CLUSTER_NAME = 'devops202101'
+        LOCATION = 'us-east4-c'
+        CREDENTIALS_ID = 'gke2'
+    }
+
+    stages {
+        
+        stage('Deploy to GKE') {
+             agent {
+                docker { 
+                    image 'google/cloud-sdk:latest' 
+                }
                 
+            }
+            environment {
+                CLOUDSDK_CONFIG="/tmp"
+                KUBECONFIG="~/.kube"
+            }
+
+             steps {
+                withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+                    sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                    sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
+                    sh 'kubectl delete -f ./Lab09/k8s/lab01.yaml'
                 }
             }
 
