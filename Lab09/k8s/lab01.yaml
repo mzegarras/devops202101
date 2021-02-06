@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab01_manuelzegarra
+  labels:
+    app: lab01
+spec:
+  ports:
+    - port: 7070
+      targetPort: 7070
+  selector:
+    app: lab01
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab01_manuelzegarra
+spec:
+  selector:
+    matchLabels:
+      app: lab01
+      version: v1
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: lab01
+        version: v1
+    spec:
+      containers:
+        - name: lab01
+          image: mzegarra/lab01sut:1.0.0
+          readinessProbe:
+             httpGet:
+               path: /actuator/health
+               port: 7070
+             initialDelaySeconds: 30
+             periodSeconds: 10
+             timeoutSeconds: 10
+             successThreshold: 1
+             failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - pgrep -f java
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi        
+          ports:
+            - containerPort: 7070
+          envFrom:
+            - configMapRef:
+                name: ms-configurations
