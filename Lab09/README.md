@@ -54,86 +54,86 @@
     kubectl get nodes
     ```
 1. Crear job
-```grovy    
-pipeline {
-            
-    agent any
-
-    environment {
-        PROJECT_ID = 'devops202101'
-        CLUSTER_NAME = 'devops202101'
-        LOCATION = 'us-east4-c'
-        CREDENTIALS_ID = 'gke2'
-    }
-
-    stages {
-        
-        stage('Deploy to GKE') {
-             agent {
-                docker { 
-                    image 'google/cloud-sdk:latest' 
-                }
+    ```grovy    
+    pipeline {
                 
-            }
-            environment {
-                CLOUDSDK_CONFIG="/tmp"
-                KUBECONFIG="~/.kube"
-            }
+        agent any
 
-             steps {
-                withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                    sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
-                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
-                    sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
-                    sh 'kubectl apply -f ./Lab09/k8s/clientes.yaml'
+        environment {
+            PROJECT_ID = 'devops202101'
+            CLUSTER_NAME = 'devops202101'
+            LOCATION = 'us-east4-c'
+            CREDENTIALS_ID = 'gke2'
+        }
+
+        stages {
+            
+            stage('Deploy to GKE') {
+                agent {
+                    docker { 
+                        image 'google/cloud-sdk:latest' 
+                    }
+                    
                 }
-            }
+                environment {
+                    CLOUDSDK_CONFIG="/tmp"
+                    KUBECONFIG="~/.kube"
+                }
 
+                steps {
+                    withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+                        sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+                        sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                        sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
+                        sh 'kubectl apply -f ./Lab09/k8s/clientes.yaml'
+                    }
+                }
+
+            }
         }
     }
-}
-```
+    ```
 
 1. Crear job clientes-apocalipsis:
-```grovy    
-pipeline {
-            
-    agent any
-
-    environment {
-        PROJECT_ID = 'devops202101'
-        CLUSTER_NAME = 'devops202101'
-        LOCATION = 'us-east4-c'
-        CREDENTIALS_ID = 'gke2'
-    }
-
-    stages {
-        
-        stage('Deploy to GKE') {
-             agent {
-                docker { 
-                    image 'google/cloud-sdk:latest' 
-                }
+    ```grovy    
+    pipeline {
                 
-            }
-            environment {
-                CLOUDSDK_CONFIG="/tmp"
-                KUBECONFIG="~/.kube"
-            }
+        agent any
 
-             steps {
-                withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                    sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
-                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
-                    sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
-                    sh 'kubectl delete -f ./Lab09/k8s/lab01.yaml'
+        environment {
+            PROJECT_ID = 'devops202101'
+            CLUSTER_NAME = 'devops202101'
+            LOCATION = 'us-east4-c'
+            CREDENTIALS_ID = 'gke2'
+        }
+
+        stages {
+            
+            stage('Deploy to GKE') {
+                agent {
+                    docker { 
+                        image 'google/cloud-sdk:latest' 
+                    }
+                    
                 }
-            }
+                environment {
+                    CLOUDSDK_CONFIG="/tmp"
+                    KUBECONFIG="~/.kube"
+                }
 
+                steps {
+                    withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+                        sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+                        sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                        sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
+                        sh 'kubectl delete -f ./Lab09/k8s/lab01.yaml'
+                    }
+                }
+
+            }
         }
     }
-}
-```
+    ```
 
 
 1. Crear Webhook Github
@@ -147,9 +147,9 @@ pipeline {
     * H/1 * * * *
 
 1. Git branch
-```shell  
-    git branch -v -a
-    git checkout -b features/login
-    git push --set-upstream origin features/login
-    git branch -a
-```    
+    ```shell  
+        git branch -v -a
+        git checkout -b features/login
+        git push --set-upstream origin features/login
+        git branch -a
+    ```    
