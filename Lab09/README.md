@@ -41,7 +41,7 @@
     * Project Name: gke
 
 1. Crear cluster de kubernetes
- ```bash
+    ```bash
     gcloud config set project devops202101
     gcloud container clusters create devops202101 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.18
     ```
@@ -53,6 +53,7 @@
     kubectl delete -f ./Lab09/k8s/clientes.yaml
     kubectl get nodes
     ```
+
 1. Crear job
     ```grovy    
     pipeline {
@@ -152,4 +153,4 @@
         git checkout -b features/login
         git push --set-upstream origin features/login
         git branch -a
-    ```    
+    ```     
