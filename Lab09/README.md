@@ -41,9 +41,10 @@
     * Project Name: gke
 
 1. Crear cluster de kubernetes
+ ```bash
     gcloud config set project devops202101
     gcloud container clusters create devops202101 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.18
-
+    ```
 
 1. Comandos para kubernertes
 
