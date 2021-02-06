@@ -8,7 +8,9 @@
     ```
 
 1. Iniciar jenkins
-    ```bash         
+    ```bash
+    cd ~/devops202101/Lab09
+          
     rm -fr jenkins_home
     mkdir jenkins_home
     docker-compose up -d
