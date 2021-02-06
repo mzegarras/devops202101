@@ -53,7 +53,7 @@
     kubectl delete -f ./Lab09/k8s/clientes.yaml
     kubectl get nodes
     ```
-
+1. Crear job
 ```grovy    
 pipeline {
             
