@@ -21,15 +21,15 @@
     ``` 
     
 1. Verificar plugins:
-    "pipeline"
-    "Docker Pipeline"
-    "Pipeline Maven Integration"
-    "Warnings Next Generation"
-    "Copy Artifacts"
-    "Pipeline Utility Steps"
-    "Jacoco"
-    "SonarQube Scanner" [Información](https://www.jenkins.io/doc/pipeline/steps/sonar/)
-    "Google Kubernetes Engine"
+    * "pipeline"
+    * "Docker Pipeline"
+    * "Pipeline Maven Integration"
+    * "Warnings Next Generation"
+    * "Copy Artifacts"
+    * "Pipeline Utility Steps"
+    * "Jacoco"
+    * "SonarQube Scanner" [Información](https://www.jenkins.io/doc/pipeline/steps/sonar/)
+    * "Google Kubernetes Engine"
 
 
 1. Crear credenciales Github: githubuser
