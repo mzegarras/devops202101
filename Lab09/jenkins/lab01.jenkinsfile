@@ -29,7 +29,7 @@ pipeline {
                 sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
                 sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
                 sh 'ls -lta '
-                sh 'cat ./Lab09/k8s/lab01.yaml'
+                sh 'kubectl apply -f ./Lab09/k8s/lab01.yaml'
                 }
             }
 
