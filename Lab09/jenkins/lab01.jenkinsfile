@@ -11,8 +11,6 @@ pipeline {
 
     stages {
         
-       
-            
         stage('Deploy to GKE') {
              agent {
                 docker { 
@@ -26,12 +24,11 @@ pipeline {
             }
 
              steps {
-
                 withCredentials([[$class: 'FileBinding', credentialsId: 'gke2', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
                 sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
                 sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
                 sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
-                sh '../k8s./lab01.yaml'
+                sh '../k8s/lab01.yaml'
                 }
             }
 
