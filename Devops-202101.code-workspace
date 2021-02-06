@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../AppDemos"
+		},
+		{
+			"path": "../Devops202101-clientes"
 		}
 	]
 }

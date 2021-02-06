@@ -19,8 +19,7 @@
 
     docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
     ``` 
-    e4bb7dc1ac6c4a84a2c0a259081fb0b9
-
+    
 1. Verificar plugins:
     "pipeline"
     "Docker Pipeline"
@@ -33,7 +32,6 @@
     "Google Kubernetes Engine"
 
 
-
 1. Crear credenciales Github: githubuser
 1. Crear credenciales docker-hub: dockerhub
 1. Crear credenciales gke
@@ -44,7 +42,14 @@
     gcloud config set project devops202101
     gcloud container clusters create devops202101 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.18
 
-1. Crear job clientes-genesis:
+
+1. Comandos para kubernertes
+
+    ```bash
+    kubectl apply -f ./Lab09/k8s/clientes.yaml
+    kubectl delete -f ./Lab09/k8s/clientes.yaml
+    kubectl get nodes
+    ```
 
 ```grovy    
 pipeline {
@@ -126,3 +131,22 @@ pipeline {
     }
 }
 ```
+
+
+1. Crear Webhook Github
+    * repository >> settings >> webhooks
+    * Clic en webhooks
+    * Clic en "Add webhooks"
+    * http://<ip>:<puerto>/github-webhook/
+
+1. Configurar en jenkins
+    * "Build Triggers" > "GitHub hook trigger for GITScm polling"
+    * H/1 * * * *
+
+1. Git branch
+```shell  
+    git branch -v -a
+    git checkout -b features/login
+    git push --set-upstream origin features/login
+    git branch -a
+```    
