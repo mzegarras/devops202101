@@ -1,0 +1,37 @@
+pipeline {
+            
+    agent any
+
+    environment {
+        PROJECT_ID = 'devops202101'
+        CLUSTER_NAME = 'devops202101'
+        LOCATION = 'us-east4-c'
+        CREDENTIALS_ID = 'gke'
+    }
+
+    stages {
+        
+        stage('Deploy to GKE') {
+             agent {
+                docker { 
+                    image 'google/cloud-sdk:latest' 
+                }
+                
+            }
+            environment {
+                CLOUDSDK_CONFIG="/tmp"
+                KUBECONFIG="~/.kube"
+            }
+
+             steps {
+                withCredentials([[$class: 'FileBinding', credentialsId: env.CREDENTIALS_ID, variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+                    sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+                    sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                    sh 'gcloud container clusters get-credentials $CLUSTER_NAME --zone $LOCATION --project $PROJECT_ID'
+                    sh 'kubectl apply -f ./Lab09/k8s/clientes-aldo-trucios.yaml'
+                }
+            }
+
+        }
+    }
+}
